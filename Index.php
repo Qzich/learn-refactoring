@@ -14,7 +14,8 @@ class Index {
      * 
      */
     public static function main() {
-        echo "Hello World\n";
+        $customer = new Customer("Orush Buk");
+        echo $customer->statement();
     }
 
 }
