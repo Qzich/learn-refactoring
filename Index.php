@@ -1,5 +1,8 @@
 <?php
 
+require_once 'bootstrap.php';
+Index::main();
+
 /**
  * Index class. Runs main method.
  *
@@ -16,5 +19,4 @@ class Index {
 
 }
 
-Index::main();
 ?>
