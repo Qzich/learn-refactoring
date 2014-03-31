@@ -46,14 +46,9 @@ class Customer {
         $result = "Учет аренды для " . $this->getName() . "\n";
 
         foreach ($this->_rentals as $each) {
-            
-// добавить очки для активного арендатора
-            $frequentRenterPoints ++;
-// бонус за аренду новинки на два дня
-            if (($each->getMovie()->getPriceCode() == Movie :: NEW_RELEASE) &&
-                    $each->getDaysRented() > 1)
-                $frequentRenterPoints ++;
-            
+
+            $frequentRenterPoints += $each->getFrequentRenterPoints();
+
 //показать результаты для этой аренды
             $result .= "\t" . $each->getMovie()->getTitle() . "\t" . $each->getCharge() . "\n";
             $totalAmount += $each->getCharge();

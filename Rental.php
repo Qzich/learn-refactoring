@@ -46,6 +46,16 @@ class Rental {
         return $result;
     }
 
+    public function getFrequentRenterPoints() {
+        $frequentRenterPoints = 0;
+        $frequentRenterPoints ++;
+    // бонус за аренду новинки на два дня
+        if (($this->getMovie()->getPriceCode() == Movie :: NEW_RELEASE) &&
+                $this->getDaysRented() > 1)
+            $frequentRenterPoints ++;
+        return $frequentRenterPoints;
+    }
+
     /**
      * 
      * @return int
