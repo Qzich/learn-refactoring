@@ -41,7 +41,6 @@ class Customer {
     }
 
     public function statement() {
-        $totalAmount = 0;
         $frequentRenterPoints = 0;
         $result = "Учет аренды для " . $this->getName() . "\n";
 
@@ -51,12 +50,19 @@ class Customer {
 
 //показать результаты для этой аренды
             $result .= "\t" . $each->getMovie()->getTitle() . "\t" . $each->getCharge() . "\n";
-            $totalAmount += $each->getCharge();
         }
 //добавить нижний колонтитул
-        $result .= "Сумма задолженности составляет " . $totalAmount . "\n";
+        $result .= "Сумма задолженности составляет " . $this->getTotalCharge() . "\n";
         $result .= "Вы заработали " . $frequentRenterPoints . " очков за активность";
         return $result;
+    }
+
+    public function getTotalCharge() {
+        $totalAmount = 0;
+        foreach ($this->_rentals as $each) {
+            $totalAmount += $each->getCharge();
+        }
+        return $totalAmount;
     }
 
 }
