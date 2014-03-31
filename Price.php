@@ -10,6 +10,13 @@ abstract class Price {
     abstract function getPriceCode();
 
     abstract function getCharge($daysRented);
+
+    public function getFrequentRenterPoints($daysRented) {
+        $frequentRenterPoints = 0;
+        $frequentRenterPoints ++;
+        return $frequentRenterPoints;
+    }
+
 }
 
 ?>

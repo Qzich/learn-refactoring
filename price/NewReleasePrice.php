@@ -21,6 +21,13 @@ class NewReleasePrice extends \Price {
         return $result;
     }
 
+    public function getFrequentRenterPoints($daysRented) {
+        $frequentRenterPoints = parent::getFrequentRenterPoints($daysRented);
+        if ($daysRented > 1)
+            $frequentRenterPoints ++;
+        return $frequentRenterPoints;
+    }
+
 }
 
 ?>

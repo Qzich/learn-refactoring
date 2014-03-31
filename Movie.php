@@ -73,13 +73,7 @@ class Movie {
      * @return int
      */
     public function getFrequentRenterPoints($daysRented) {
-        $frequentRenterPoints = 0;
-        $frequentRenterPoints ++;
-        // бонус за аренду новинки на два дня
-        if (($this->getPriceCode() == Movie :: NEW_RELEASE) &&
-                $daysRented > 1)
-            $frequentRenterPoints ++;
-        return $frequentRenterPoints;
+        return $this->_price->getFrequentRenterPoints($daysRented);
     }
 
 }
