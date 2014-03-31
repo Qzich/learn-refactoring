@@ -53,6 +53,23 @@ class Customer {
         return $result;
     }
 
+    public function htmlStatement() {
+        $result = "<H1>Операции аренды для <EM>" . $this->getName() .
+                "</EM></H1><P>\n";
+        foreach ($this->_rentals as $each) {
+// показать результаты по каждой аренде
+            $result .= $each->getMovie()->getTitle() . ": " .
+                    $each->getCharge() . "<BR>\n";
+        }
+//добавить нижний колонтитул
+        $result .= "<P>Ваша задолженность составляет <EM>" .
+                $this->getTotalCharge() . "</EM><P>\n";
+        $result .= "На этой аренде вы заработали <EM>" .
+                $this->getFrequentRenterPoints() .
+                "</EM> очков за активность<P>";
+        return $result;
+    }
+
     /**
      * 
      * @return int
