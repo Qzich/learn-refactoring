@@ -43,6 +43,46 @@ class Movie {
         return $this->_title;
     }
 
+    /**
+     * 
+     * @param int $daysRented
+     * @return int
+     */
+    public function getCharge($daysRented) {
+        $result = 0;
+        switch ($this->getPriceCode()) {
+            case Movie::REGULAR:
+                $result += 2;
+                if ($daysRented > 2)
+                    $result += ($daysRented - 2 ) * 1.5;
+                break;
+            case Movie ::NEW_RELEASE:
+                $result += $daysRented * 3;
+                break;
+            case Movie ::CHILDRENS:
+                $result += 1.5;
+                if ($daysRented > 3)
+                    $result += ($daysRented - 3) * 1.5;
+                break;
+        }
+        return $result;
+    }
+
+    /**
+     * 
+     * @param int $daysRented
+     * @return int
+     */
+    public function getFrequentRenterPoints($daysRented) {
+        $frequentRenterPoints = 0;
+        $frequentRenterPoints ++;
+        // бонус за аренду новинки на два дня
+        if (($this->getPriceCode() == Movie :: NEW_RELEASE) &&
+                $daysRented > 1)
+            $frequentRenterPoints ++;
+        return $frequentRenterPoints;
+    }
+
 }
 
 ?>
