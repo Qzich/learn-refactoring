@@ -8,6 +8,8 @@
 abstract class Price {
 
     abstract function getPriceCode();
+
+    abstract function getCharge($daysRented);
 }
 
 ?>

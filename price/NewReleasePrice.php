@@ -13,6 +13,14 @@ class NewReleasePrice extends \Price {
         return \Movie::NEW_RELEASE;
     }
 
+    public function getCharge($daysRented) {
+        $result = 0;
+
+        $result += $daysRented * 3;
+
+        return $result;
+    }
+
 }
 
 ?>
