@@ -41,28 +41,39 @@ class Customer {
     }
 
     public function statement() {
-        $frequentRenterPoints = 0;
         $result = "Учет аренды для " . $this->getName() . "\n";
 
         foreach ($this->_rentals as $each) {
-
-            $frequentRenterPoints += $each->getFrequentRenterPoints();
-
 //показать результаты для этой аренды
             $result .= "\t" . $each->getMovie()->getTitle() . "\t" . $each->getCharge() . "\n";
         }
 //добавить нижний колонтитул
         $result .= "Сумма задолженности составляет " . $this->getTotalCharge() . "\n";
-        $result .= "Вы заработали " . $frequentRenterPoints . " очков за активность";
+        $result .= "Вы заработали " . $this->getFrequentRenterPoints() . " очков за активность";
         return $result;
     }
 
-    public function getTotalCharge() {
+    /**
+     * 
+     * @return int
+     */
+    private function getTotalCharge() {
         $totalAmount = 0;
         foreach ($this->_rentals as $each) {
             $totalAmount += $each->getCharge();
         }
         return $totalAmount;
+    }
+
+    /**
+     * return int
+     */
+    private function getFrequentRenterPoints() {
+        $frequentRenterPoints = 0;
+        foreach ($this->_rentals as $each) {
+            $frequentRenterPoints += $each->getFrequentRenterPoints();
+        }
+        return $frequentRenterPoints;
     }
 
 }
