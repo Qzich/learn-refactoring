@@ -22,7 +22,7 @@ class IndexTest extends PHPUnit_Framework_TestCase {
                 "Учет аренды для Orush Buk\n" .
                 "Сумма задолженности составляет 0\n" .
                 "Вы заработали 0 очков за активность");
-        Index::main();
+        Index::main(array());
     }
 
 }

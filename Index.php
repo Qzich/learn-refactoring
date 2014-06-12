@@ -1,8 +1,5 @@
 <?php
 
-require_once 'bootstrap.php';
-Index::main();
-
 /**
  * Index class. Runs main method.
  *
@@ -13,7 +10,7 @@ class Index {
     /**
      * 
      */
-    public static function main() {
+    public static function main($args) {
         $customer = new Customer("Orush Buk");
         echo $customer->statement();
     }
